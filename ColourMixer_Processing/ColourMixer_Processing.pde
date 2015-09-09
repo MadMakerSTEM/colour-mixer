@@ -21,7 +21,7 @@ int HEIGHT = 600;
 void setup() {
   println(Serial.list());
   //String comPort = Serial.list()[0];    // should work on mac/linux
-  String comPort = Serial.list()[1];    // should work on windows
+  String comPort = Serial.list()[Serial.list().length-1];    // should work on windows
   port = new Serial(this, comPort, 9600);
   size(800, 600);
   fill(red,green,blue);
@@ -31,7 +31,6 @@ void draw() {
   while (port.available () > 0) {
     serial = port.readStringUntil('\n');
   }
-  serial = trim(serial);
   if (serial != null) {
     String[] a = split(serial.substring(4), ',');    // ignore the RGB: at the beginning, and split the rest where there is a ,
     if (a.length >= 3) {
