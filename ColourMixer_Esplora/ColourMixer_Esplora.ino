@@ -18,7 +18,7 @@ http://challenge.madmaker.com.au
 // start off with no value
 int red = 0;
 int green = 0;
-int blue =0;
+int blue = 0;
 
 void setup() {
   Serial.begin(9600); 
@@ -37,6 +37,7 @@ void printColour(){ //prints the colour stored to the Serial Monitor
   Serial.print(",");
   Serial.println(blue);
 }
+
 void showColour(){
     int sliderPosition = Esplora.readSlider();
     byte brightness = map(sliderPosition, 0, 1024, 0, 255); //rescale the slider's value to the range of the LEDs. 
