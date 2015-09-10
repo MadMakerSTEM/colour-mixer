@@ -21,7 +21,7 @@ int HEIGHT = 600;
 void setup() {
   println(Serial.list());
   //String comPort = Serial.list()[0];    // should work on mac/linux
-  String comPort = Serial.list()[Serial.list().length-1];    // should work on windows
+  String comPort = Serial.list()[Serial.list().length-1];    // select the last port, should work on windows
   port = new Serial(this, comPort, 9600);
   size(800, 600);
   fill(red,green,blue);
@@ -32,6 +32,7 @@ void draw() {
     serial = port.readStringUntil('\n');
   }
   if (serial != null) {
+    serial = trim(serial);
     String[] a = split(serial.substring(4), ',');    // ignore the RGB: at the beginning, and split the rest where there is a ,
     if (a.length >= 3) {
       red = int(a[0]);
@@ -52,7 +53,7 @@ void draw() {
     }
   }
   else {
-    println("Could not connect to Esplora! Make sure it is connected to the computer,  and the correct port is selected!");
+    println("Could not connect to Esplora! Make sure it is connected to the computer, and the correct port is selected!");
     exit();
   }
 }
