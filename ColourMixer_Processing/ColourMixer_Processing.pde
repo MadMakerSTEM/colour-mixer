@@ -15,11 +15,9 @@ String serial;
 Serial port;
 
 int red,green,blue;
-int WIDTH = 800;
-int HEIGHT = 600;
 
 void setup() {
-  println(Serial.list());
+  printArray(Serial.list());
   //String comPort = Serial.list()[0];    // should work on mac/linux
   String comPort = Serial.list()[Serial.list().length-1];    // select the last port, should work on windows
   port = new Serial(this, comPort, 9600);
