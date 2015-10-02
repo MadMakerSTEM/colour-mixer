@@ -44,7 +44,7 @@ void draw() {
       textAlign(CENTER,CENTER);
       stroke(255);
       fill(255);
-      translate(WIDTH/2, HEIGHT/2);
+      translate(width/2, height/2);
       text(serial,0,0);
     }
     else {
